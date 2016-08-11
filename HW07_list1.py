@@ -23,7 +23,11 @@
 # Note: python does not have a ++ operator, but += works.
 def match_ends(words):
     # +++your code here+++
-    return
+    count_str = 0 #counter to count words with requirement
+    for word in words: # iterate through list
+        if len(word) >= 2 and (word[0] == word[-1]): # check for length and characters
+            count_str += 1 #increase count
+    return count_str
 
 
 # B. front_x
@@ -35,7 +39,18 @@ def match_ends(words):
 # before combining them.
 def front_x(words):
     # +++your code here+++
-    return
+    lst_x = [] # list for words starting with x
+    lst_rest = [] #list for rest
+    for word in words: #iterate through list
+        if word[0] == 'x': # if first letter is x, add to first list
+            lst_x.append(word)
+        else:#else add to the second list
+            lst_rest.append(word)
+    # sort the lists
+    lst_x.sort()
+    lst_rest.sort()
+    # return the concatenated list
+    return lst_x + lst_rest
 
 
 # C. sort_last
@@ -46,8 +61,10 @@ def front_x(words):
 # Hint: use a custom key= function to extract the last element form each tuple.
 def sort_last(tuples):
     # +++your code here+++
-    return
-
+    return sorted(tuples, key = last)
+# custom function for key
+def last(t):
+    return t[-1]
 
 # Simple provided test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
@@ -56,7 +73,7 @@ def test(got, expected):
         prefix = ' OK '
     else:
         prefix = '  X '
-    print('%s got: %s expected: %s'.format(prefix, repr(got), repr(expected)))
+    print('{} got: {} expected: {}'.format(prefix, repr(got), repr(expected)))
 
 
 # Calls the above functions with interesting inputs.
